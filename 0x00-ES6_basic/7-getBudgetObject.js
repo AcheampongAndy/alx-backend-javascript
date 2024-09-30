@@ -1,5 +1,5 @@
-export default function getBudgetObject(income, gpa, capita) {
-	const budget = {income, gpa, capita};
+export default function getBudgetObject(income, gdp, capita) {
+	const budget = {income, gdp, capita};
 
 	return budget;
 }
