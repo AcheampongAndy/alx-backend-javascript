@@ -1,3 +1,4 @@
+// Function definition
 export default function getFullResponseFromAPI(success) {
   const executorFunction = (resolve, reject) => {
     if (success === true) {
