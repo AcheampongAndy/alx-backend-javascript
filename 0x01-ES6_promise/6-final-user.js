@@ -1,7 +1,7 @@
 import { signUpUser } from './4-user-promise'
 import { uploadPhoto } from './5-photo-reject'
 
-export default handleProfileSignup(firstName, lastName, fileName) {
+export default async function handleProfileSignup(firstName, lastName, fileName) {
 	const user = signUpUser(firstName, lastName)
 	.then((value) => ({
 		status: 'fulfilled',
@@ -15,5 +15,5 @@ export default handleProfileSignup(firstName, lastName, fileName) {
 	}));
 
 	const result = await Promise.all([ user, photo ]);
-	return results;
+	return result;
 }
