@@ -1,30 +1,49 @@
 // Define a Teacher interface
 interface Teacher {
-  readonly firstName: string;    // Readonly, can only be set during initialization
-  readonly lastName: string;     // Readonly, can only be set during initialization
-  fullTimeEmployee: boolean;     // Must be defined
-  location: string;              // Must be defined
-  yearsOfExperience?: number;    // Optional
-  [key: string]: any;            // Allows any additional property like contract
+  readonly firstName: string;
+  readonly lastName: string;
+  fullTimeEmployee: boolean;
+  location: string;
+  yearsOfExperience?: number;
+  [key: string]: any;
 }
 
-// Example usage:
-const teacher3: Teacher = {
-  firstName: 'John',
-  lastName: 'Doe',
-  fullTimeEmployee: false,
-  location: 'London',
-  contract: false,
+// Define an interface for the printTeacher function
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+// Implement the printTeacher function
+const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
+  return `${firstName.charAt(0)}. ${lastName}`;
 };
 
-console.log(teacher3);
+// Define an interface for the constructor of the StudentClass
+interface StudentClassConstructor {
+  new (firstName: string, lastName: string): StudentClassInterface;
+}
 
-// Output should be:
-// {
-//   contract: false,
-//   firstName: 'John',
-//   fullTimeEmployee: false,
-//   lastName: 'Doe',
-//   location: 'London'
-// }
+// Define an interface for the StudentClass itself
+interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
 
+// Implement the StudentClass
+class StudentClass implements StudentClassInterface {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
